@@ -26,14 +26,5 @@ class CartController extends Controller
         return view('frontend.detail', $data);
     }
 
-    // cart
-    public function cart($id){
-        $data ['title'] = 'Cart';
-        $data['products'] = Product::find($id);
-        $data['user'] = User::find($id);
-        $data['tanggal'] = Carbon::now();
-        $data['cart'] = Cart::find($id);
-
-        return view('dashbord.pages.cart', $data);
-    }
+    
 }

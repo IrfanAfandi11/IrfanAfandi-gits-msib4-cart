@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
 use App\Models\Cart;
-use App\Models\User;
 use App\Models\Transaction;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller

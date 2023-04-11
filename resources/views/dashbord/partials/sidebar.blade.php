@@ -16,6 +16,10 @@
                     <div class="sb-nav-link-icon"><i class="fa fa-cart-plus"></i></div>
                     Cart
                   </a>
+                  <a class="nav-link" href="/transaksi">
+                    <div class="sb-nav-link-icon"><i class="fa fa-credit-card"></i></div>
+                    Transaksi
+                  </a>
                   
                   {{-- <hr class="sidebar-divider">
                   <a class="nav-link" href="/user/{user}/edit">

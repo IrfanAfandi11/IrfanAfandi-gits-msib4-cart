@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth','CekLevel:admin,user']], function() {
     Route::get('profile', [TransactionController::class, 'pindex']);
     Route::post('profile', [TransactionController::class, 'update']);
 
+    Route::get('transaksi',  [DashbordController::class, 'transaksi']);
 
     Route::get('history',  [HistoryController::class, 'index']);
     Route::get('history/{id}',  [HistoryController::class, 'detail']);
