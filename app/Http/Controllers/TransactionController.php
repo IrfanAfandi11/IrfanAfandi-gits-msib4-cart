@@ -153,4 +153,36 @@ class TransactionController extends Controller
 
     	return redirect('/history');
     }
+
+	// transaksi dashbord
+	public function transaksi()
+    {
+		$data ['title'] = 'Transaksi';
+        $data['cart'] = Cart::where('user_id', Auth::user()->id)->get();
+		// $data['transaction'] = Transaction::all();
+		// $data['user'] = User::with('cart')->get();
+        // $title = 'Transaksi';
+    	// $cart = Cart::where('id', Auth::user()->id)->first();
+    	// $transaction = Transaction::where('cart_id', $cart->id)->get();
+
+    	return view('dashbord.pages.transaksi', $data);
+    }
+
+	public function verify(Request $request){
+  
+		Transaction::find($request->id)->update(['status'=>2]);
+   
+		return redirect('/transaksi');
+	}
+   
+	   public function block(Request $request){
+		  
+	       $transaksi = Transaction::find($request)->first();
+	       if($transaksi){
+	           $transaksi->verify = '0';
+	           $transaksi->save();
+	       }
+   
+	       return redirect('/transaksi');
+	   }
 }

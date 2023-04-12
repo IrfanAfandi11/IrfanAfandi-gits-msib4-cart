@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Carbon\Carbon;
 
@@ -26,5 +27,13 @@ class CartController extends Controller
         return view('frontend.detail', $data);
     }
 
-    
+    // dashbord cart
+    public function cart()
+    {
+		$data ['title'] = 'Transaksi';
+        $data['cart'] = Cart::with('user')->get();
+        // $data['user'] = User::all();
+
+    	return view('dashbord.pages.cart', $data);
+    }
 }

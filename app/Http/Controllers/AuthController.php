@@ -28,7 +28,7 @@ class AuthController extends Controller
 
         User::create($validatedData);
                 
-        return redirect('/category')->with('success', 'Registration Successfull');
+        return redirect('/')->with('success', 'Registration Successfull');
     }
 
     // login
@@ -51,7 +51,7 @@ class AuthController extends Controller
                 return redirect()->intended('/');
             }
             if(auth()->user()->level == 'admin')
-            return redirect()->intended('/category');
+            return redirect()->intended('/');
             else
             return redirect()->intended('/');
         }

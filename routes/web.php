@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\HistoryController;
 
@@ -40,6 +39,9 @@ Route::group(['middleware' => ['auth','CekLevel:admin']], function() {
     // kategori
     Route::resource('/category', CategoryController::class);
 
+    Route::get('/transaksi',  [TransactionController::class, 'transaksi']);
+    Route::put('/transaksi', [TransaksiController::class, 'verify']);
+
 });
 
 // route user-admin
@@ -59,7 +61,6 @@ Route::group(['middleware' => ['auth','CekLevel:admin,user']], function() {
     Route::get('profile', [TransactionController::class, 'pindex']);
     Route::post('profile', [TransactionController::class, 'update']);
 
-    Route::get('transaksi',  [DashbordController::class, 'transaksi']);
 
     Route::get('history',  [HistoryController::class, 'index']);
     Route::get('history/{id}',  [HistoryController::class, 'detail']);

@@ -6,14 +6,6 @@
         <div class="col-md-10 mb-3 mt-3">
             <img src="{{ asset('assets/images/logo.png') }}" class="rounded mx-auto d-block" width="150" alt="">
         </div>
-        <div class="col-md-12 mt-2">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Riwayat Pemesanan</li>
-                </ol>
-            </nav>
-        </div>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
@@ -29,21 +21,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no = 1; ?>
+                            
                             @foreach($carts as $item)
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $item->tanggal }}</td>
                                 <td>
                                     @if($item->status == 1)
-                                    Sudah Pesan & Belum dibayar
+                                        Sudah Pesan & Belum dibayar
                                     @else
-                                    Sudah dibayar 
+                                        Sudah dibayar 
                                     @endif
                                 </td>
                                 <td>Rp. {{ number_format($item->jumlah_harga-$item->kode) }}</td>
                                 <td>
-                                    <a href="{{ url('history') }}/{{ $item->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Detail</a>
+                                    <a href="{{ url('history') }}/{{ $item->id }}" class="btn btn-primary"><i class="fa fa-file-text-o"></i> Detail</a>
                                 </td>
                             </tr>
                             @endforeach
