@@ -44,6 +44,9 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
                 <li><a class="dropdown-item" href="{{ url('/category') }}">Category</a></li>
+                <li><a class="dropdown-item" href="{{ url('/product') }}">Product</a></li>
+                <li><a class="dropdown-item" href="{{ url('/cart') }}">Cart</a></li>
+                <li><a class="dropdown-item" href="{{ url('/transaksi') }}">Transaksi</a></li>
                 {{-- <li><hr class="dropdown-divider"></li> --}}
               </ul>
             @else

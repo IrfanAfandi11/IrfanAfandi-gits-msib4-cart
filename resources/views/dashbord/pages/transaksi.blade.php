@@ -18,58 +18,44 @@
               <thead>
                   <tr>
                     <th>Name</th>
-                    {{-- <th>Product</th>
+                    <th>Product</th>
                     <th>Status</th>
-                    <th>Image</th> --}}
-                    <th>Tanggal Pesan</th>
+                    <th>Jumlah</th>
                     <th>Price</th>
                   </tr>
               </thead>
               <tfoot>
                   <tr>
                     <th>Name</th>
-                    {{-- <th>Tanggal Pesan</th>
+                    <th>Product</th>
                     <th>Status</th>
-                    <th>Image</th> --}}
-                    <th>Tanggal Pesan</th>
+                    <th>Jumlah</th>
                     <th>Price</th>
                   </tr>
               </tfoot>
               <tbody>
-                @foreach ($cart as $item)
+                @foreach ($transaction as $item)
                   <tr>
-                    <td></td>
-                    {{-- <td>{{ $cart->user_id }}</td> --}}
-                    <td>{{ $item->tanggal}}</td>
-                    <td>{{ $item->kode}}</td>
-                    {{-- <td>
-                      @if( $item->status  === 1)
-                      <form action="/verify" method="post" class="d-inline">
-                        @csrf @method('PUT')
-                        <input type="hidden" name="id" value="{{ $item->id }}">
-                        <button type="submit" class="btn btn-warning" >Verify</button>
-                      </form>
-                      @else
-                        <form action="/block" method="get" class="d-inline">
+                    <td>{{ $item->cart->user->name }}</td>
+                    <td>{{ $item->product->name}}</td>
+                    <td>
+                      @if( $item->cart->status  == 1)
+                      <form action="/verify" method="get" class="d-inline">
                           @csrf
-                            <input type="hidden" name="id" value="{{ $item->id }}">
-                            <button type="submit" class="btn btn-success">Verified</button>
-                        </form>
-                      @endif
-                    </td> --}}
-                    {{-- <td><img width="60px" height="60px" src="{{ Storage::url('gambar/').$item->product->image }}" ></td> --}}
-                    {{-- <td align="right">Rp. {{ number_format($cart->jumlah_harga-$cart->kode) }}</td> --}}
-                    {{-- <td>
-                      <form action="/product/{{ $item->id }}" method="POST" class="d-inline">
-                        @method('DELETE')
-                        @csrf
-  
-                        {{-- Update  --}}
-                        {{-- <a href="product/{{ $item->id }}/edit" class="badge bg-info"><i class="fa-solid fa-pen-to-square"></i></a>   --}}
-                        {{-- Delete  --}}
-                        {{-- <button class="badge bg-danger border-0" onclick="return confirm('apakah anda yakin ?')"><i class="fa-solid fa-trash-can"></i></button>
+                          <input type="hidden" name="id" value="{{ $item->cart->id }}">
+                          <button type="submit" class="btn btn-warning" >Verify</button>
                       </form>
-                    </td>  --}}
+      
+                  @else
+                      <form action="/block" method="get" class="d-inline">
+                          @csrf
+                          <input type="hidden" name="id" value="{{ $item->cart->id }}">
+                          <button type="submit" class="btn btn-success" >Verified</button>
+                      </form>
+                  @endif
+                    </td>
+                    <td>{{ $item->jumlah}}</td>
+                    <td align="right">Rp. {{ number_format($item->jumlah_harga-$item->cart->kode) }}</td>
                   </tr>
                 @endforeach
               </tbody>

@@ -21,9 +21,7 @@
 <body>
     @include('frontend.include.navbar')
 
-    {{-- <div class="container squeeze push--top"> --}}
-        @yield('content')
-    {{-- </div> --}}
+    @yield('content')
 
     <script src="{{ asset('assets/js/app.js')}}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

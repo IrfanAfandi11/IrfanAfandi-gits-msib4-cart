@@ -30,9 +30,8 @@ class CartController extends Controller
     // dashbord cart
     public function cart()
     {
-		$data ['title'] = 'Transaksi';
+		$data ['title'] = 'Cart';
         $data['cart'] = Cart::with('user')->get();
-        // $data['user'] = User::all();
 
     	return view('dashbord.pages.cart', $data);
     }

@@ -40,13 +40,15 @@ Route::group(['middleware' => ['auth','CekLevel:admin']], function() {
     Route::resource('/category', CategoryController::class);
 
     Route::get('/transaksi',  [TransactionController::class, 'transaksi']);
-    Route::put('/transaksi', [TransaksiController::class, 'verify']);
+    Route::get('/cart', [CartController::class, 'cart']);
+    // verifikasi pembayaran
+    Route::get('/verify', [TransactionController::class, 'verify']);
+    Route::get('/block', [TransactionController::class, 'block']);
 
 });
 
 // route user-admin
 Route::group(['middleware' => ['auth','CekLevel:admin,user']], function() {
-    Route::get('/cart', [CartController::class, 'cart']);
 
     // Detail Cart
     Route::get('/detail/{id}', [CartController::class, 'dcart']);

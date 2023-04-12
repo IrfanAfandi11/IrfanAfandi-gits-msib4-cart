@@ -158,31 +158,31 @@ class TransactionController extends Controller
 	public function transaksi()
     {
 		$data ['title'] = 'Transaksi';
-        $data['cart'] = Cart::where('user_id', Auth::user()->id)->get();
-		// $data['transaction'] = Transaction::all();
-		// $data['user'] = User::with('cart')->get();
-        // $title = 'Transaksi';
-    	// $cart = Cart::where('id', Auth::user()->id)->first();
-    	// $transaction = Transaction::where('cart_id', $cart->id)->get();
+        $data['transaction'] = Transaction::with('cart', 'product')->get();
 
     	return view('dashbord.pages.transaksi', $data);
     }
 
-	public function verify(Request $request){
-  
-		Transaction::find($request->id)->update(['status'=>2]);
+	public function verify(Request $request, Cart $cart){
+      
+        $cart = Cart::find($request)->first();
+
+        if($cart){
+            $cart->status = '2';
+            $cart->save();
+        }
+
+        return redirect('/transaksi');
+    }
    
-		return redirect('/transaksi');
-	}
-   
-	   public function block(Request $request){
+	public function block(Request $request){
 		  
-	       $transaksi = Transaction::find($request)->first();
-	       if($transaksi){
-	           $transaksi->verify = '0';
-	           $transaksi->save();
-	       }
+	    $cart = Cart::find($request)->first();
+	    if($cart){
+            $cart->status = '1';
+	        $cart->save();
+	    }
    
-	       return redirect('/transaksi');
-	   }
+	    return redirect('/transaksi');
+	}
 }
