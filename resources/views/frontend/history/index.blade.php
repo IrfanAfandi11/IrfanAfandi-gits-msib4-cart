@@ -13,7 +13,6 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>No</th>
                                 <th>Tanggal</th>
                                 <th>Status</th>
                                 <th>Jumlah Harga</th>
@@ -23,8 +22,6 @@
                         <tbody>
                             
                             @foreach($carts as $item)
-                            <tr>
-                                <td>{{ $no++ }}</td>
                                 <td>{{ $item->tanggal }}</td>
                                 <td>
                                     @if($item->status == 1)
