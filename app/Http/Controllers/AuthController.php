@@ -28,7 +28,7 @@ class AuthController extends Controller
 
         User::create($validatedData);
                 
-        return redirect('/')->with('success', 'Registration Successfull');
+        return redirect('/login')->with('success', 'Registration Successfull');
     }
 
     // login
